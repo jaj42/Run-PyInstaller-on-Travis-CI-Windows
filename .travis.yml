@@ -7,20 +7,19 @@
 os: windows      # Windows Server, version 1803
 language: shell  # 'language: python' is not yet supported on Windows
 
-#env:
-#  global:
-#    - PY27PATH=/c/Python27:/c/Python27/Scripts
-#    - PY37PATH=/c/Python37:/c/Python37/Scripts
-#  
-#env: PATH=$PY37PATH:$PATH
+env:
+  global:
+    - PY3PATH=/c/Python38:/c/Python38/Scripts
+    - PATH=$PY3PATH:$PATH
+  
 before_install:
 - choco install python
 
 install:
   - python -m ensurepip
-  - python -m pip install --upgrade pip
+  #- python -m pip install --upgrade pip
   #- pip install -r requirements.txt
-  - python -m pip install pyinstaller
+  - pip install pyinstaller
 
 script:
   - pyinstaller --onefile hello.py
